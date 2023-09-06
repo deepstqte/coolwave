@@ -147,9 +147,7 @@ function setup() {
   
   var fibonacciFactor = random([55, 89, 144, 233, 377, 610]);
   var inc = scl / fibonacciFactor;
-  print(fibonacciFactor)
   var palette = random(["bw", "user1723", "mleejr", "kiki", "johnnycash424", "skittles", "codincowboy", "gallwas", "seacasa", "sartocrates", "nikita", "metabananas"]);
-  print(palette)
   // var palette = "bw"
   var xoff = 0;
   var strokeColor = random(colors[palette]);
