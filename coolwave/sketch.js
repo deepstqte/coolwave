@@ -34,8 +34,8 @@ let colors = {
     {hue: 217, sat: 100, light: 47},
     {hue: 0, sat: 0, light: 60},
     {hue: 0, sat: 100, light: 49},
+    {hue: 180, sat: 100, light: 50},
     {hue: 0, sat: 0, light: 100},
-    {hue: 180, sat: 100, light: 50}
   ],
   skittles: [
     {hue: 0, sat: 0, light: 21},
