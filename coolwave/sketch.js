@@ -6,9 +6,9 @@ let colors = {
     {hue: 0, sat: 0, light: 0},
   ],
   user1723: [
-    {hue: 212, sat: 14, light: 46},
-    {hue: 205, sat: 20, light: 84},
     {hue: 0, sat: 0, light: 15},
+    {hue: 205, sat: 20, light: 84},
+    {hue: 212, sat: 14, light: 46},
     {hue: 0, sat: 0, light: 0},
   ],
   mleejr: [
