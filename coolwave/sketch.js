@@ -32,8 +32,8 @@ let colors = {
     {hue: 0, sat: 0, light: 0},
     {hue: 49, sat: 99, light: 69},
     {hue: 217, sat: 100, light: 47},
-    {hue: 0, sat: 100, light: 49},
     {hue: 0, sat: 0, light: 60},
+    {hue: 0, sat: 100, light: 49},
     {hue: 0, sat: 0, light: 100},
     {hue: 180, sat: 100, light: 50}
   ],
