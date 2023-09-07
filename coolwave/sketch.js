@@ -160,9 +160,9 @@ function setup() {
       // stroke(strokeColor.hue, strokeColor.sat, strokeColor.light);
       fill(colors[palette][index].hue, colors[palette][index].sat, colors[palette][index].light);
       rect(scl*j, scl*k, scl, scl);
-      rect(canvasSize-scl*j, scl*k, scl, scl);
-      rect(scl*j, canvasSize-scl*k, scl, scl);
-      rect(canvasSize-scl*j, canvasSize-scl*k, scl, scl);
+      rect(canvasSize-scl-scl*j, scl*k, scl, scl);
+      rect(scl*j, canvasSize-scl-scl*k, scl, scl);
+      rect(canvasSize-scl-scl*j, canvasSize-scl-scl*k, scl, scl);
       yoff += inc;
     }
     xoff += inc;
