@@ -1,4 +1,4 @@
-let canvasSize = 2400;
+let canvasSize = 1000;
 
 let colors = {
   bw: [
