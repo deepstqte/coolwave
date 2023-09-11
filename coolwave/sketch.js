@@ -50,9 +50,11 @@ let colors = {
   codincowboy: [
     {hue: 202, sat: 60, light: 49},
     {hue: 9, sat: 49, light: 50},
+    {hue: 48, sat: 57, light: 53},
+    {hue: 299, sat: 44, light: 58},
     {hue: 349, sat: 91, light: 95},
     {hue: 108, sat: 47, light: 55},
-    {hue: 48, sat: 57, light: 53}
+    {hue: 260, sat: 48, light: 55},
   ],
   gallwas: [
     {hue: 97, sat: 55, light: 76},
