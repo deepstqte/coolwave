@@ -1,4 +1,4 @@
-let canvasSize = 1000;
+let canvasSize = 2400;
 
 let colors = {
   bw: [
@@ -6,9 +6,9 @@ let colors = {
     {hue: 0, sat: 0, light: 0},
   ],
   user1723: [
+    {hue: 212, sat: 14, light : 46},
     {hue: 0, sat: 0, light: 15},
     {hue: 205, sat: 20, light: 84},
-    {hue: 212, sat: 14, light: 46},
     {hue: 0, sat: 0, light: 0},
   ],
   mleejr: [
@@ -91,17 +91,20 @@ let colors = {
     {hue: 228, sat: 51, light: 79},
   ],
   test: [
-    {hue: 0, sat: 0, light: 0},
-    {hue: 0, sat: 0, light: 10},
-    {hue: 0, sat: 0, light: 20},
-    {hue: 0, sat: 0, light: 30},
-    {hue: 0, sat: 0, light: 40},
-    {hue: 0, sat: 0, light: 50},
-    {hue: 0, sat: 0, light: 60},
-    {hue: 0, sat: 0, light: 70},
-    {hue: 0, sat: 0, light: 80},
-    {hue: 0, sat: 0, light: 90},
     {hue: 0, sat: 0, light: 100},
+    {hue: 0, sat: 0, light: 0},
+    
+    // {hue: 0, sat: 0, light: 0},
+    // {hue: 0, sat: 0, light: 10},
+    // {hue: 0, sat: 0, light: 20},
+    // {hue: 0, sat: 0, light: 30},
+    // {hue: 0, sat: 0, light: 40},
+    // {hue: 0, sat: 0, light: 50},
+    // {hue: 0, sat: 0, light: 60},
+    // {hue: 0, sat: 0, light: 70},
+    // {hue: 0, sat: 0, light: 80},
+    // {hue: 0, sat: 0, light: 90},
+    // {hue: 0, sat: 0, light: 100},
   ],
   adamstarr: [
     {hue: 213, sat: 40, light: 59},
@@ -128,7 +131,7 @@ let colors = {
     {hue: 356, sat: 76, light: 48},
   ],
   metabananas: [
-    {hue: 0, sat: 0, light: 15},
+    {hue: 0, sat: 0, light: 15},  
     {hue: 0, sat: 0, light: 0},
     {hue: 42, sat: 100, light: 50},
     {hue: 0, sat: 0, light: 30},
@@ -140,29 +143,75 @@ let colors = {
 }
 
 function setup() {
+  canvas.style.width = 'auto';
+  canvas.style.height = '100%';
+
   colorMode(HSL);
   createCanvas(canvasSize, canvasSize);
-  let scl = random([1, 2, 5, 10]);
+  let scl = random([5, 1, 1, 10]);
+  // let scl = random([1]);
   let checkersScl = random([5, 10, 20]);
   
-  var fibonacciFactor = random([55, 89, 144, 233, 377, 610]);
+  var fibonacciFactor = random([89, 144, 233, 377, 610]);
+  // var fibonacciFactor = random([89]);
+  print(fibonacciFactor);
   var inc = scl / fibonacciFactor;
-  var palette = random(["user1723", "mleejr", "kiki", "johnnycash424", "skittles", "codincowboy", "gallwas", "seacasa", "sartocrates", "nikita", "metabananas"]);
-  // var palette = "bw"
+  var palette = random(["bw", "user1723", "mleejr", "kiki", "johnnycash424", "skittles", "codincowboy", "gallwas", "seacasa", "sartocrates", "nikita", "metabananas"]);
+  // var palette = "test"
   var xoff = 0;
   var strokeColor = random(colors[palette]);
-  for (var j = 0; j < (canvasSize/scl)/2 + 1; j++) {
+  var coinFlip = random(4);
+  // var coinFlip = 3.4
+  // print(coinFlip)
+  if (coinFlip < 0.2) {
+    print("#")
+  } else if (coinFlip < 2) {
+    print("+");
+  } else if (coinFlip < 3.5) {
+    print("x");
+  } else {
+    print("x+");
+  }
+  for (var j = 0; j < (canvasSize/scl) + 1; j++) {
     var yoff = 0;
-    for (var k = 0; k < (canvasSize/scl)/2 + 1; k++) {
+    for (var k = 0; k < (canvasSize/scl) + 1; k++) {
       var index = floor(noise(xoff, yoff) * colors[palette].length);
-      noStroke()
-      // var strokeColor = random(colors[palette]);
-      // stroke(strokeColor.hue, strokeColor.sat, strokeColor.light);
+      if (scl > 10) {
+        // var strokeColor = random(colors[palette]);
+        stroke(strokeColor.hue, strokeColor.sat, strokeColor.light);
+      } else {
+        noStroke()
+      }
       fill(colors[palette][index].hue, colors[palette][index].sat, colors[palette][index].light);
-      rect(scl*j, scl*k, scl, scl);
-      rect(canvasSize-scl-scl*j, scl*k, scl, scl);
-      rect(scl*j, canvasSize-scl-scl*k, scl, scl);
-      rect(canvasSize-scl-scl*j, canvasSize-scl-scl*k, scl, scl);
+
+      if (coinFlip < 0.2) {
+        rect(scl*j, scl*k, scl, scl);
+      } else if (coinFlip < 2) {
+        if (j < (canvasSize/scl)/2 && k < (canvasSize/scl)/2) {
+          rect(scl*j, scl*k, scl, scl);
+          rect(canvasSize-scl-scl*j, scl*k, scl, scl);
+          rect(scl*j, canvasSize-scl-scl*k,scl, scl);
+          rect(canvasSize-scl-scl*j, canvasSize-scl-scl*k, scl, scl); 
+        }
+      } else if (coinFlip < 3.5) {
+        if ((canvasSize/scl - j > k) && (j >= k))  {
+          rect(scl*j, scl*k, scl, scl);
+          rect(scl*k, scl*j, scl, scl);
+          rect(canvasSize-scl-scl*j, canvasSize-scl-scl*k, scl, scl);
+          rect(canvasSize-scl-scl*k, canvasSize-scl-scl*j, scl, scl);
+        } 
+      } else {
+        if (j >= k && j < (canvasSize/scl)/2 && k < (canvasSize/scl)/2)  {
+          rect(scl*j, scl*k, scl, scl);
+          rect(canvasSize-scl-scl*j, scl*k, scl, scl);
+          rect(canvasSize-scl-scl*k, scl*j, scl, scl);
+          rect(canvasSize-scl-scl*k, canvasSize-scl-scl*j, scl, scl);
+          rect(canvasSize-scl-scl*j, canvasSize-scl-scl*k, scl, scl);
+          rect(scl*j, canvasSize-scl-scl*k, scl, scl);
+          rect(scl*k, canvasSize-scl-scl*j, scl, scl);
+          rect(scl*k, scl*j, scl, scl);
+        } 
+      }
       yoff += inc;
     }
     xoff += inc;
@@ -170,20 +219,20 @@ function setup() {
   
   // addTexture(0, 0, canvasSize, canvasSize, 0.03);
   
-  var checkersInc = 0.1;
+  var checkersInc = 0.02;
   var aoff = 1723;
   for (var a = 0; a < (canvasSize/checkersScl) + 1; a++) {
     var boff = 1723;
     for (var b = 0; b < (canvasSize/checkersScl) + 1; b++) {
-      if (noise(aoff, boff) > 0.75) {
+      if (noise(aoff, boff) > 0.82) {
         if (a % 2 == b % 2) {
           fill(colors[palette][0].hue, colors[palette][0].sat, colors[palette][0].light);
           // fill(0, 0, 0, 0.6);
-          // rect(checkersScl*a, checkersScl*b, checkersScl, checkersScl);
+          rect(checkersScl*a, checkersScl*b, checkersScl, checkersScl);
         } else {
           fill(colors[palette][colors[palette].length-1].hue, colors[palette][colors[palette].length-1].sat, colors[palette][colors[palette].length-1].light);
           // fill(0, 0, 100, 0.6);
-          // rect(checkersScl*a, checkersScl*b, checkersScl, checkersScl);
+          rect(checkersScl*a, checkersScl*b, checkersScl, checkersScl);
         }
       }
       boff += checkersInc;
@@ -203,7 +252,4 @@ function addTexture(x, y, w, h, opacity) {
       2
     );
   }
-}
-
-function draw() {
 }
