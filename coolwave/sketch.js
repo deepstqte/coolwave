@@ -108,29 +108,38 @@ let colors = {
     // {hue: 0, sat: 0, light: 90},
     // {hue: 0, sat: 0, light: 100},
   ],
-  adamstarr: [
-    {hue: 213, sat: 40, light: 59},
-    {hue: 358, sat: 72, light: 71},
-    {hue: 59, sat: 96, light: 89},
-    {hue: 47, sat: 98, light: 51},
-    {hue: 353, sat: 84, light: 44},
-    {hue: 235, sat: 46, light: 29},
-    {hue: 0, sat: 0, light: 100},
-    {hue: 0, sat: 0, light: 0}
+  massurealist: [
+    {hue: 168, sat: 24, light: 45},
+    {hue: 60, sat: 48, light: 95},
+    {hue: 61, sat: 93, light: 82},
+    {hue: 141, sat: 38, light: 72},
+    {hue: 214, sat: 100, light: 31},
+    {hue: 34, sat: 88, light: 37},
+    {hue: 20, sat: 79, light: 22},
+    {hue: 193, sat: 58, light: 80},
+    {hue: 26, sat: 89, light: 37},
+    {hue: 28, sat: 65, light: 73},
+    {hue: 51, sat: 95, light: 63},
+    {hue: 22, sat: 49, light: 22},
+    {hue: 38, sat: 87, light: 59},
   ],
-  rouge: [
-    {hue: 0, sat: 87, light: 20},
-    {hue: 359, sat: 84, light: 27},
-    {hue: 359, sat: 82, light: 24},
-    {hue: 358, sat: 73, light: 33},
-    {hue: 358, sat: 76, light: 30},
-    {hue: 358, sat: 70, light: 40},
-    {hue: 358, sat: 74, light: 36},
-    {hue: 358, sat: 72, light: 43},
-    {hue: 358, sat: 73, light: 41},
-    // {hue: 2, sat: 91, light: 67},
-    {hue: 358, sat: 72, light: 47},
-    {hue: 356, sat: 76, light: 48},
+  creeezy: [
+    {hue: 0, sat: 82, light: 43},
+    // yellow
+    {hue: 53, sat: 92, light: 51},
+    // dark red
+    {hue: 0, sat: 100, light: 34},
+    // blue
+    {hue: 196, sat: 98, light: 68},
+    // hoodie grey
+    {hue: 0, sat: 4, light: 29},
+    // pink
+    {hue: 359, sat: 49, light: 81},
+    // black
+    {hue: 0, sat: 0, light: 0},
+    // bright red
+    {hue: 353, sat: 100, light: 50},
+    {hue: 52, sat: 96, light: 68},
   ],
   metabananas: [
     {hue: 0, sat: 0, light: 15},  
@@ -158,7 +167,7 @@ function setup() {
   // var fibonacciFactor = random([89]);
   print(fibonacciFactor);
   var inc = scl / fibonacciFactor;
-  var palette = random(["bw", "user1723", "mleejr", "kiki", "johnnycash424", "skittles", "codincowboy", "gallwas", "seacasa", "sartocrates", "nikita", "metabananas"]);
+  var palette = random(["user1723", "mleejr", "kiki", "johnnycash424", "skittles", "codincowboy", "gallwas", "seacasa", "sartocrates", "nikita", "metabananas", "creeezy", "massurealist"]);
   // var palette = "test"
   var xoff = 0;
   var strokeColor = random(colors[palette]);
