@@ -163,25 +163,27 @@ function setup() {
   // let scl = random([1]);
   let checkersScl = random([5, 10, 20]);
   
+  print("pixel size: " + scl)
   var fibonacciFactor = random([89, 144, 233, 377, 610]);
   // var fibonacciFactor = random([89]);
-  print(fibonacciFactor);
+  print("zoom: " + fibonacciFactor);
   var inc = scl / fibonacciFactor;
   var palette = random(["user1723", "mleejr", "kiki", "johnnycash424", "skittles", "codincowboy", "gallwas", "seacasa", "sartocrates", "nikita", "metabananas", "creeezy", "massurealist"]);
   // var palette = "test"
+  print("palette: " + palette)
   var xoff = 0;
   var strokeColor = random(colors[palette]);
   var coinFlip = random(4);
   // var coinFlip = 3.4
   // print(coinFlip)
   if (coinFlip < 0.2) {
-    print("#")
+    print("symmetry: none")
   } else if (coinFlip < 2) {
-    print("+");
+    print("symmetry: +");
   } else if (coinFlip < 3.5) {
-    print("x");
+    print("symmetry: x");
   } else {
-    print("x+");
+    print("symmetry: x+");
   }
   for (var j = 0; j < (canvasSize/scl) + 1; j++) {
     var yoff = 0;
