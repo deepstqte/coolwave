@@ -123,6 +123,28 @@ let colors = {
     {hue: 22, sat: 49, light: 22},
     {hue: 38, sat: 87, light: 59},
   ],
+  meltedmindz: [
+    {hue: 0, sat: 0, light: 91},
+    // {hue: 304, sat: 100, light: 59},
+    {hue: 306, sat: 75, light: 36},
+    {hue: 0, sat: 0, light: 100},
+    {hue: 307, sat: 56, light: 29},
+    {hue: 89, sat: 100, light: 71},
+    {hue: 213, sat: 100, light: 50},
+    {hue: 0, sat: 0, light: 0},
+    {hue: 0, sat: 0, light: 69},
+  ],
+  jordan: [
+    {hue: 72, sat: 66, light: 58},
+    {hue: 79, sat: 75, light: 37},
+    {hue: 71, sat: 86, light: 39},
+    {hue: 0, sat: 0, light: 0},
+    {hue: 68, sat: 65, light: 25},
+    {hue: 63, sat: 97, light: 52},
+    {hue: 79, sat: 97, light: 28},
+    {hue: 99, sat: 76, light: 15},
+    {hue: 91, sat: 97, light: 13},
+  ],
   creeezy: [
     {hue: 0, sat: 82, light: 43},
     // yellow
