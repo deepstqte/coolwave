@@ -190,7 +190,7 @@ function setup() {
   // var fibonacciFactor = random([89]);
   print("zoom: " + fibonacciFactor);
   var inc = scl / fibonacciFactor;
-  var palette = random(["user1723", "mleejr", "kiki", "johnnycash424", "skittles", "codincowboy", "gallwas", "seacasa", "sartocrates", "nikita", "metabananas", "creeezy", "massurealist"]);
+  var palette = random(["user1723", "mleejr", "kiki", "johnnycash424", "skittles", "codincowboy", "gallwas", "seacasa", "sartocrates", "nikita", "metabananas", "creeezy", "massurealist", "meltedmindz", "jordan"]);
   // var palette = "test"
   print("palette: " + palette)
   var xoff = 0;
