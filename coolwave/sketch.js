@@ -1,15 +1,55 @@
 let canvasSize = 1000;
 
 let colors = {
-  bw: [
+  shadesofgray: [
     {hue: 0, sat: 0, light: 100},
+    {hue: 0, sat: 0, light: 90},
+    {hue: 0, sat: 0, light: 80},
+    {hue: 0, sat: 0, light: 70},
+    {hue: 0, sat: 0, light: 60},
+    {hue: 0, sat: 0, light: 50},
+    {hue: 0, sat: 0, light: 40},
+    {hue: 0, sat: 0, light: 30},
+    {hue: 0, sat: 0, light: 20},
+    {hue: 0, sat: 0, light: 10},
     {hue: 0, sat: 0, light: 0},
+  ],
+  garrett: [
+    {hue: 45, sat: 55, light: 64},
+    {hue: 45, sat: 55, light: 64},
+    {hue: 22, sat: 47, light: 26},
+    {hue: 29, sat: 40, light: 62},
+    {hue: 222, sat: 39, light: 29},
+    {hue: 206, sat: 11, light : 88},
+    {hue: 0, sat: 0, light: 15},
+    {hue: 0, sat: 0, light: 15},
   ],
   user1723: [
     {hue: 212, sat: 14, light : 46},
     {hue: 0, sat: 0, light: 15},
     {hue: 205, sat: 20, light: 84},
     {hue: 0, sat: 0, light: 0},
+  ],
+  peachdog: [
+    {hue: 4, sat: 100, light: 83},
+    {hue: 89, sat: 48, light: 55},
+    {hue: 27, sat: 25, light : 45},
+    {hue: 7, sat: 84, light : 69},
+    {hue: 29, sat: 100, light: 80},
+    {hue: 23, sat: 79, light: 65},
+    {hue: 27, sat: 25, light : 45},
+    {hue: 240, sat: 2, light : 28},
+  ],
+  erin: [
+    {hue: 211, sat: 86, light: 56},
+    {hue: 211, sat: 86, light: 56},
+    {hue: 60, sat: 56, light : 91},
+    {hue: 211, sat: 66, light: 56},
+    {hue: 60, sat: 76, light : 91},
+    {hue: 83, sat: 39, light : 44},
+    {hue: 60, sat: 36, light : 91},
+    {hue: 83, sat: 59, light : 44},
+    {hue: 83, sat: 59, light : 44},
   ],
   mleejr: [
     {hue: 0, sat: 0, light: 60},
@@ -65,6 +105,17 @@ let colors = {
     {hue: 241, sat: 76, light: 45},
     {hue: 240, sat: 4, light: 10},
   ],
+  meltedmindz: [
+    {hue: 0, sat: 0, light: 91},
+    // {hue: 304, sat: 100, light: 59},
+    {hue: 306, sat: 75, light: 36},
+    {hue: 0, sat: 0, light: 100},
+    {hue: 307, sat: 56, light: 29},
+    {hue: 89, sat: 100, light: 71},
+    {hue: 213, sat: 100, light: 50},
+    {hue: 0, sat: 0, light: 0},
+    {hue: 0, sat: 0, light: 69},
+  ],
   seacasa: [
     {hue: 0, sat: 0, light: 0},
     {hue: 0, sat: 0, light: 15},
@@ -78,7 +129,7 @@ let colors = {
     {hue: 0, sat: 0, light: 100},
     {hue: 286, sat: 100, light: 50},
     {hue: 0, sat: 0, light: 15},
-    {hue: 90, sat: 100, light: 71},
+    {hue: 89, sat: 100, light: 71},
     {hue: 0, sat: 0, light: 30},
     {hue: 0, sat: 0, light: 60},
     {hue: 0, sat: 0, light: 0},
@@ -93,8 +144,14 @@ let colors = {
     {hue: 228, sat: 51, light: 79},
   ],
   test: [
-    {hue: 0, sat: 0, light: 100},
+    {hue: 0, sat: 0, light: 78},
+    {hue: 24, sat: 59, light: 28},
     {hue: 0, sat: 0, light: 0},
+    {hue: 200, sat: 20, light: 49},
+    {hue: 27, sat: 85, light: 24},
+    {hue: 17, sat: 76, light: 52},
+    {hue: 203, sat: 16, light: 68},
+    {hue: 27, sat: 100, light: 17},
     
     // {hue: 0, sat: 0, light: 0},
     // {hue: 0, sat: 0, light: 10},
@@ -123,28 +180,6 @@ let colors = {
     {hue: 22, sat: 49, light: 22},
     {hue: 38, sat: 87, light: 59},
   ],
-  meltedmindz: [
-    {hue: 0, sat: 0, light: 91},
-    // {hue: 304, sat: 100, light: 59},
-    {hue: 306, sat: 75, light: 36},
-    {hue: 0, sat: 0, light: 100},
-    {hue: 307, sat: 56, light: 29},
-    {hue: 89, sat: 100, light: 71},
-    {hue: 213, sat: 100, light: 50},
-    {hue: 0, sat: 0, light: 0},
-    {hue: 0, sat: 0, light: 69},
-  ],
-  jordan: [
-    {hue: 72, sat: 66, light: 58},
-    {hue: 79, sat: 75, light: 37},
-    {hue: 71, sat: 86, light: 39},
-    {hue: 0, sat: 0, light: 0},
-    {hue: 68, sat: 65, light: 25},
-    {hue: 63, sat: 97, light: 52},
-    {hue: 79, sat: 97, light: 28},
-    {hue: 99, sat: 76, light: 15},
-    {hue: 91, sat: 97, light: 13},
-  ],
   creeezy: [
     {hue: 0, sat: 82, light: 43},
     // yellow
@@ -162,6 +197,49 @@ let colors = {
     // bright red
     {hue: 353, sat: 100, light: 50},
     {hue: 52, sat: 96, light: 68},
+  ],
+  mahnaz: [
+    {hue: 0, sat: 0, light: 0},
+    {hue: 0, sat: 0, light: 68},
+    {hue: 26, sat: 89, light: 76},
+    {hue: 3, sat: 86, light: 60},
+    {hue: 44, sat: 75, light: 74},
+    {hue: 16, sat: 97, light: 71},
+    {hue: 272, sat: 78, light: 66},
+    {hue: 44, sat: 58, light: 67},
+    {hue: 45, sat: 98, light: 84},
+  ],
+  threadguy: [
+    {hue: 0, sat: 0, light: 0},
+    {hue: 338, sat: 75, light: 80},
+    {hue: 66, sat: 39, light: 45},
+    {hue: 289, sat: 15, light: 29},
+    {hue: 96, sat: 53, light: 52},
+    {hue: 67, sat: 50, light: 71},
+    {hue: 358, sat: 13, light: 57},
+    {hue: 98, sat: 76, light: 64},
+    {hue: 2, sat: 76, light: 42},
+    {hue: 92, sat: 62, light: 69},
+  ],
+  jordan: [
+    {hue: 72, sat: 66, light: 58},
+    {hue: 79, sat: 75, light: 37},
+    {hue: 71, sat: 86, light: 39},
+    {hue: 0, sat: 0, light: 0},
+    {hue: 68, sat: 65, light: 25},
+    {hue: 63, sat: 97, light: 52},
+    {hue: 79, sat: 97, light: 28},
+    {hue: 99, sat: 76, light: 15},
+    {hue: 91, sat: 97, light: 13},
+  ],
+  fivetoads: [
+    {hue: 0, sat: 0, light: 100},
+    {hue: 51, sat: 98, light: 48},
+    {hue: 0, sat: 0, light: 0},
+    {hue: 0, sat: 0, light: 100},
+    {hue: 0, sat: 0, light: 0},
+    {hue: 196, sat: 99, light: 68},
+    {hue: 0, sat: 0, light: 0},
   ],
   metabananas: [
     {hue: 0, sat: 0, light: 15},  
@@ -190,7 +268,7 @@ function setup() {
   // var fibonacciFactor = random([89]);
   print("zoom: " + fibonacciFactor);
   var inc = scl / fibonacciFactor;
-  var palette = random(["user1723", "mleejr", "kiki", "johnnycash424", "skittles", "codincowboy", "gallwas", "seacasa", "sartocrates", "nikita", "metabananas", "creeezy", "massurealist", "meltedmindz", "jordan"]);
+  var palette = random(["user1723", "mleejr", "kiki", "johnnycash424", "skittles", "codincowboy", "gallwas", "seacasa", "sartocrates", "nikita", "metabananas", "creeezy", "massurealist", "meltedmindz", "jordan", "garrett", "fivetoads"]);
   // var palette = "test"
   print("palette: " + palette)
   var xoff = 0;
