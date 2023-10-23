@@ -1,15 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8" />
-
-  </head>
-  <body>
-    <main>
-    </main>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Wave UI</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="sketch.js"></script>
-  </body>
+    <style>
+        /*body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f7f7f7;
+        }*/
+
+        h2 {
+            background-color: #343a40;
+            color: #f7f7f7;
+            padding: 10px 20px;
+            margin: 20;
+        }
+
+        /*#settingsPane {
+            background-color: #fff;
+            width: 250px;
+            height: 100vh;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: fixed;
+            overflow-y: auto;
+        }*/
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+        }
+
+        /* Styles for the settingsPane (Left Sidebar) */
+        #settingsPane {
+            width: 20%; /* Adjust this value as needed */
+            min-width: 200px; /* Set a minimum width for the sidebar */
+            height: 100vh; /* Makes the sidebar span the full height of the viewport */
+            background-color: #ffffff;
+            border-right: 1px solid #e0e0e0; /* A subtle border to separate the sidebar from the main content */
+            overflow-y: auto; /* Enables scrolling if content exceeds sidebar height */
+            padding: 20px;
+        }
+
+        main {
+            background-color: #f4f4f4; /* Background color */
+            padding: 20px;
+            display: flex;
+            justify-content: center; /* Centers content horizontally */
+            align-items: center; /* Centers content vertically */
+            height: 1000px; /* This makes sure the mainContent takes up the entire height of the viewport */
+            box-sizing: border-box; /* This ensures padding is included in the height */
+/*            max-height: 1000px;*/
+/*            overflow: auto;*/
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        /* Additional styles to make things look better */
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #333333;
+            color: #ffffff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+
+    </style>
+</head>
+<body>
+  <div id="settingsPane">
+    <h2>coolWave Settings</h2>
+
+    <label for="canvasScale">Canvas Scale:</label>
+    <input type="number" id="canvasScale" min="1" max="5" value="1">
+
+    <label for="palette">Palette:</label>
+    <select id="palette">
+        <!-- Options will be populated here using JavaScript -->
+    </select>
+
+    <label for="disorderMap">Disorder Map:</label>
+    <select id="disorderMap">
+        <!-- Options will be populated here using JavaScript -->
+    </select>
+
+    <label for="orderAgent">Order Agent:</label>
+    <select id="orderAgent">
+        <!-- Options will be populated here using JavaScript -->
+    </select>
+
+    <label for="special">Special:</label>
+    <select id="special">
+        <!-- Options will be populated here using JavaScript -->
+    </select>
+
+    <label for="pixelSize">Pixel Size:</label>
+    <select id="pixelSize">
+        <!-- Options will be populated here using JavaScript -->
+    </select>
+    <script>
+        let paletteSelectElement = document.getElementById('palette');
+
+        // Iterate through the keys of the colors object
+        for (let key in colors) {
+            // Create a new option element
+            let paletteOptionElement = document.createElement('option');
+            paletteOptionElement.value = key;
+            paletteOptionElement.textContent = key;
+            
+            // Append the option to the select element
+            paletteSelectElement.appendChild(paletteOptionElement);
+        }
+
+        let disorderMapSelectElement = document.getElementById('disorderMap');
+
+        // Iterate through the keys of the maps object
+        for (let key in disorderMaps) {
+            // Create a new option element
+            let disorderMapOptionElement = document.createElement('option');
+            disorderMapOptionElement.value = disorderMaps[key];
+            disorderMapOptionElement.textContent = key;
+            
+            // Append the option to the select element
+            disorderMapSelectElement.appendChild(disorderMapOptionElement);
+        }
+
+        let orderAgentSelectElement = document.getElementById('orderAgent');
+
+        // Iterate through the keys of the agents object
+        for (let key in orderAgents) {
+            // Create a new option element
+            let orderAgentOptionElement = document.createElement('option');
+            orderAgentOptionElement.value = orderAgents[key];
+            orderAgentOptionElement.textContent = key;
+            
+            // Append the option to the select element
+            orderAgentSelectElement.appendChild(orderAgentOptionElement);
+        }
+
+        let specialSelectElement = document.getElementById('special');
+
+        // Iterate through the keys of the special object
+        for (let key in special) {
+            // Create a new option element
+            let specialOptionElement = document.createElement('option');
+            specialOptionElement.value = special[key];
+            specialOptionElement.textContent = key;
+            
+            // Append the option to the select element
+            specialSelectElement.appendChild(specialOptionElement);
+        }
+
+        let pixelSizeSelectElement = document.getElementById('pixelSize');
+
+        // Iterate through the keys of the agents object
+        for (let key in pixelSizes) {
+            // Create a new option element
+            let pixelSizeOptionElement = document.createElement('option');
+            pixelSizeOptionElement.value = pixelSizes[key];
+            pixelSizeOptionElement.textContent = key;
+            
+            // Append the option to the select element
+            pixelSizeSelectElement.appendChild(pixelSizeOptionElement);
+        }
+    </script>
+    <br><br>
+
+    <button onclick="generateArt()">Generate Art</button>
+    <br><br>
+  </div>
+  <div id="mainContent">
+      <!-- Display generated art or other content here -->
+  </div>
+</body>
 </html>
