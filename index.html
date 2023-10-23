@@ -84,10 +84,16 @@
             padding: 10px 15px;
             border: none;
             background-color: #333333;
+            margin-bottom: 20px;
             color: #ffffff;
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+        }
+
+         /* Additional styles to make things look better */
+        img {
+            border: 2px solid;
         }
 
 
@@ -190,10 +196,13 @@
             pixelSizeSelectElement.appendChild(pixelSizeOptionElement);
         }
     </script>
-    <br><br>
 
     <button onclick="generateArt()">Generate Art</button>
-    <br><br>
+    <div>
+        <a href="https://prohibition.art/project/coolwave" target="_blank">
+            <img src="prohibition-logo.png" alt="Prohibition" width="30" height="30">
+        </a>
+    </div>
   </div>
   <div id="mainContent">
       <!-- Display generated art or other content here -->
