@@ -207,12 +207,35 @@ function setup() {
 
 function generateArt() {
   // Read values from UI
-  canvasScale = document.getElementById('canvasScale').value;
-  palette = document.getElementById('palette').value;
-  disorderMapFactor = document.getElementById('disorderMap').value;
-  coinFlip = document.getElementById('orderAgent').value;
-  specialFactor = document.getElementById('special').value;
-  scl = document.getElementById('pixelSize').value;
+  if (document.getElementById('palette').value != "random") {
+    palette = document.getElementById('palette').value;  
+  } else {
+    palette = random(Object.keys(colors));
+  }
+
+  if (document.getElementById('disorderMap').value != "random") {
+    disorderMapFactor = document.getElementById('disorderMap').value;  
+  } else {
+    disorderMapFactor = random(Object.values(disorderMaps));
+  }
+
+  if (document.getElementById('orderAgent').value != "random") {
+    coinFlip = document.getElementById('orderAgent').value;  
+  } else {
+    coinFlip = random(Object.values(orderAgents));
+  }
+
+  if (document.getElementById('special').value != "random") {
+    specialFactor = document.getElementById('special').value;  
+  } else {
+    specialFactor = random(Object.values(special));
+  }
+
+  if (document.getElementById('pixelSize').value != "random") {
+    scl = document.getElementById('pixelSize').value;  
+  } else {
+    scl = random(Object.values(pixelSizes));
+  }
 
 // function setup() {
   // let canvasScale = 1;
@@ -228,14 +251,10 @@ function generateArt() {
   //   sclRange.push(10*sclI)
   // }
   // let scl = random(sclRange);
-  
-  let checkersSclRange = [10];
-  for (var checkersSclI = 1; checkersSclI <= canvasScale; checkersSclI++) {
-    checkersSclRange.push(10*(checkersSclI+1))
-  }
-  let checkersScl = random(checkersSclRange);
 
-  var inc = scl / (disorderMapFactor * canvasScale);
+  let checkersScl = random([510, 20]);
+
+  var inc = scl / disorderMapFactor;
   var xoff = floor(random(1000));
   // var coinFlip = random(0, 4);
 
