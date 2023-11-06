@@ -11,6 +11,20 @@ let colors = {
     {hue: 205, sat: 20, light: 84},
     {hue: 205, sat: 20, light: 84},
   ],
+  pepe: [
+    {hue: 230, sat: 96, light : 56},
+    {hue: 230, sat: 96, light : 56},
+    {hue: 230, sat: 96, light : 56},
+    {hue: 0, sat: 0, light : 0},
+    {hue: 19, sat: 44, light : 47},
+    {hue: 0, sat: 0, light : 0},
+    {hue: 99, sat: 33, light : 45},
+    {hue: 99, sat: 33, light : 35},
+    {hue: 0, sat: 0, light : 0},
+    {hue: 0, sat: 0, light : 100},
+    {hue: 0, sat: 0, light : 100},
+    {hue: 0, sat: 0, light : 100},
+  ],
   garrett: [
     {hue: 45, sat: 55, light: 64},
     {hue: 45, sat: 55, light: 64},
@@ -205,42 +219,70 @@ function setup() {
     generateArt();
 }
 
+// 0x062df8ee9f68760a1af6e76b9e851695f346514c1d56c7b62706c0e034eb9aeb
+
+const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+
 function generateArt() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  var seedFromUrl = urlParams.get('seed');
+
+  if (seedFromUrl == null && document.getElementById("seed").value == "") {
+    document.getElementById("generateSeed").checked = true;
+  } else if (seedFromUrl != null) {
+    document.getElementById("seed").value = seedFromUrl;
+  }
+
+  if (document.getElementById("generateSeed").checked == true) {
+    seed = "0x" + genRanHex(64);
+    document.getElementById("seed").value = seed;
+  } else {
+    seed = document.getElementById("seed").value;
+  }
+
+  let R = new Random(seed);
   // Read values from UI
   if (document.getElementById('palette').value != "random") {
-    palette = document.getElementById('palette').value;  
+    palette = document.getElementById('palette').value;
+    R.random_choice(Object.keys(colors));
   } else {
-    palette = random(Object.keys(colors));
+    palette = R.random_choice(Object.keys(colors));
   }
 
   if (document.getElementById('disorderMap').value != "random") {
-    disorderMapFactor = document.getElementById('disorderMap').value;  
+    disorderMapFactor = document.getElementById('disorderMap').value;
+    R.random_choice(Object.values(disorderMaps));
   } else {
-    disorderMapFactor = random(Object.values(disorderMaps));
+    disorderMapFactor = R.random_choice(Object.values(disorderMaps));
   }
 
   if (document.getElementById('orderAgent').value != "random") {
-    coinFlip = document.getElementById('orderAgent').value;  
+    coinFlip = document.getElementById('orderAgent').value;
+    R.random_choice(Object.values(orderAgents));
   } else {
-    coinFlip = random(Object.values(orderAgents));
+    coinFlip = R.random_choice(Object.values(orderAgents));
   }
 
   if (document.getElementById('special').value != "random") {
-    specialFactor = document.getElementById('special').value;  
+    specialFactor = document.getElementById('special').value;
+    R.random_choice(Object.values(special));
   } else {
-    specialFactor = random(Object.values(special));
+    specialFactor = R.random_choice(Object.values(special));
   }
 
   if (document.getElementById('pixelSize').value != "random") {
-    scl = document.getElementById('pixelSize').value;  
+    scl = document.getElementById('pixelSize').value;
+    R.random_choice(Object.values(pixelSizes));
   } else {
-    scl = random(Object.values(pixelSizes));
+    scl = R.random_choice(Object.values(pixelSizes));
   }
 
 // function setup() {
   // let canvasScale = 1;
   let canvasSize = 1000;
   colorMode(HSL);
+  noiseSeed(R.random_num(0, 17231));
   createCanvas(canvasSize, canvasSize);
 
   canvas.style.width = 'auto';
@@ -252,10 +294,10 @@ function generateArt() {
   // }
   // let scl = random(sclRange);
 
-  let checkersScl = random([510, 20]);
+  let checkersScl = R.random_choice([510, 20]);
 
   var inc = scl / disorderMapFactor;
-  var xoff = floor(random(1000));
+  var xoff = R.random_int(0, 1000);
   // var coinFlip = random(0, 4);
 
   var indexes = []
@@ -263,7 +305,7 @@ function generateArt() {
 
   // var specialFactor = random(0, 1);
   var specialFactorThreshold = 0.85;
-  var hue = floor(random(0, 360));
+  var hue = R.random_int(0, 360);
   var monochromeRange = 50;
   for (var j = 0; j < (canvasSize/scl) + 1; j++) {
     var yoff = 0;
@@ -275,7 +317,6 @@ function generateArt() {
         var index = floor(noise(xoff, yoff) * colors[palette].length);
       }
       kIndexes.push(index);
-
       noStroke();
 
       if (j>1 && k>1 && indexes[j-1][k-1] != index && scl >= 5 && specialFactor >= specialFactorThreshold) {
